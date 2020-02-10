@@ -9,18 +9,22 @@ let lockTheKeyboard = true;
 $('.number').on('click', function(){
     if(lockTheKeyboard == false){
         return false;
+        
     }
     if(!operator){
         firstNumber += this.value;
         $('#first-number').html(firstNumber);
-    }else {
+    }
+    else {
         secondNumber += this.value;
         $('#second-number').html(secondNumber);
     }
 });
 
 $('.operator').on('click', function(){
-
+    if(!firstNumber && !secondNumber){
+        return false;
+    }
     operator = this.value;
     if(operator == 'plus'){
         $('#operator').html('+');
